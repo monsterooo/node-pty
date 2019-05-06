@@ -198,10 +198,10 @@ NAN_METHOD(PtyFork) {
 #endif
   }
   term->c_oflag = OPOST | ONLCR;
-  // term->c_oflag &= ~(ONLCR);
   term->c_cflag = CREAD | CS8 | HUPCL;
   term->c_lflag = ICANON | ISIG | IEXTEN | ECHO | ECHOE | ECHOK | ECHOKE | ECHOCTL;
-  term->c_lflag &= ~(ECHO | ECHOE | ECHOK | ECHONL);
+  // trun of echo
+  term->c_lflag &= ~(ECHO | ECHOE | ECHOK | ECHONL | ECHOPRT);
 
   term->c_cc[VEOF] = 4;
   term->c_cc[VEOL] = -1;
